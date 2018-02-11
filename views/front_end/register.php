@@ -4,26 +4,35 @@ require 'partials/header.php';
 $errors = [];
 $old_values = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $old_values['name'] = $name;
+  $old_values['email'] = $email;
+  $old_values['password'] = $password;
 
   if (strlen($name) <= 4) {
     $errors['name'] = "name value can't be less than 4 character";
     $old_values['name'] = $name;
   }
-  if (strlen($email) <= 4) {
+ if (strlen($email) < 4) {
     $errors['email'] = "email value can't be less than 4 character";
     $old_values['email'] = $email;
-  }
-  if (!is_email($email)) {
+  } else if (!is_email($email)) {
     $errors['email'] = "provided email is not valid email";
     $old_values['email'] = $email;
+  } else if (is_email_exists($email)) {
+    $errors['email'] = "email already exist in database";
+    $old_values['email'] = $email;
   }
+  
   if (strlen($password) <= 4) {
     $errors['password'] = "password value can't be less than 4 character";
     $old_values['password'] = $password;
+  }
+  if (empty($errors)) {
+    $old_values=[];
+    register_user($_POST);
   }
 
 }
@@ -54,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input value="<?php echo $old_values['email'] ?? ''; ?>" type="text" name="email" id="email" class="form-control">
+                <input value="<?php echo $old_values['email'] ?? ''; ?>" type="email" name="email" id="email" class="form-control">
                 <?php if(isset($errors['email'])): ?>
                   <small class="text-danger"><?php echo $errors['email'] ?></small>
                 <?php endif; ?>

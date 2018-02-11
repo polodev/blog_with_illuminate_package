@@ -1,7 +1,6 @@
 <?php 
 require 'vendor/autoload.php';
 session_start();
-
  $path = parse_url( trim( $_SERVER['REQUEST_URI'], '/' ), PHP_URL_PATH);
 
  $routes = [
@@ -12,6 +11,7 @@ session_start();
   'post' => 'views/front_end/post.php',
   'register' => 'views/front_end/register.php',
   'login' => 'views/front_end/login.php',
+  'logout' => 'views/front_end/logout.php',
   'dashboard/home' => "views/dashboard/home.php",
  ];
 
