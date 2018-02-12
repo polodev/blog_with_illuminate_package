@@ -1,6 +1,8 @@
 <?php
 use Carbon\Carbon;
 
+$app_url = 'localhost:8000';
+
 function is_authenticate() {
   return isset( $_SESSION['user'] );
 }

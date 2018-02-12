@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="assets/bootstrap.css">
+  <link rel="stylesheet" href="/assets/bootstrap.css">
 </head>
 <body>
 
@@ -28,7 +28,7 @@
         <a class="nav-link" href="/logout">Logout</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">Dashboard</a>
+        <a class="nav-link" href="/dashboard/home">Dashboard</a>
       </li>
       <?php else: ?>
         <li class="nav-item">

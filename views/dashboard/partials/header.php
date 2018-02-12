@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="assets/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/bootstrap.css">
+  <script src="/assets/jquery.js"></script>
 </head>
 <body>
 
@@ -16,11 +18,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/dashboard/home">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link" href="/category">Category</a>
       </li>
+    </ul>
+    <ul class="navbar-nav">
+      <?php if (is_authenticate()): ?>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">View Website</a>
+      </li>
+      <?php endif; ?>
     </ul>
   </div>
 </nav>
